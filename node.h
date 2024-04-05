@@ -8,32 +8,47 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "enum.h"
-
 // #define NAME_LENGTH 32
 // #define VAL_LENGTH 64
 
 #define TRUE 1
 #define FALSE 0
 
+// define node type
+typedef enum nodeType {
+    TOKEN_INT,
+    TOKEN_FLOAT,
+    TOKEN_ID,
+    TOKEN_TYPE,
+    // TOKEN_COMMA,
+    // TOKEN_SEMI,
+    // TOKEN_ASSIGNOP,
+    // TOKEN_RELOP,
+    // TOKEN_PLUS,
+    // TOKEN_MINUS,
+    TOKEN_OTHER,
+    NOT_A_TOKEN
+
+} NodeType;
+
 // typedef uint_32 bool;
 
 // node type declared
 typedef struct node {
-    int lineNo;  //  node in which line
+    int lineNo; //  node in which line
     //   int depth;   //  node depth, for count white space for print
-    NodeType type;  // node type
-    char* name;     //  node name
-    char* val;      //  node value
+    NodeType type; // node type
+    char *name;    //  node name
+    char *val;     //  node value
 
-    struct node* child;  //  non-terminals node first child node
-    struct node* next;   //  non-terminals node next brother node
+    struct node *child; //  non-terminals node first child node
+    struct node *next;  //  non-terminals node next brother node
 
 } Node;
 
-typedef Node* pNode;
+typedef Node *pNode;
 
-static inline pNode newNode(int lineNo, NodeType type, char* name, int argc,
+static inline pNode newNode(int lineNo, NodeType type, char *name, int argc,
                             ...) {
     pNode curNode = NULL;
     int nameLength = strlen(name) + 1;
@@ -44,7 +59,7 @@ static inline pNode newNode(int lineNo, NodeType type, char* name, int argc,
 
     // curNode->name = (char*)malloc(sizeof(char) * NAME_LENGTH);
     // curNode->val = (char*)malloc(sizeof(char) * VAL_LENGTH);
-    curNode->name = (char*)malloc(sizeof(char) * nameLength);
+    curNode->name = (char *)malloc(sizeof(char) * nameLength);
 
     assert(curNode->name != NULL);
     // assert(curNode->val != NULL);
@@ -71,8 +86,8 @@ static inline pNode newNode(int lineNo, NodeType type, char* name, int argc,
     return curNode;
 }
 
-static inline pNode newTokenNode(int lineNo, NodeType type, char* tokenName,
-                                 char* tokenText) {
+static inline pNode newTokenNode(int lineNo, NodeType type, char *tokenName,
+                                 char *tokenText) {
     pNode tokenNode = (pNode)malloc(sizeof(Node));
     int nameLength = strlen(tokenName) + 1;
     int textLength = strlen(tokenText) + 1;
@@ -82,8 +97,8 @@ static inline pNode newTokenNode(int lineNo, NodeType type, char* tokenName,
     tokenNode->lineNo = lineNo;
     tokenNode->type = type;
 
-    tokenNode->name = (char*)malloc(sizeof(char) * nameLength);
-    tokenNode->val = (char*)malloc(sizeof(char) * textLength);
+    tokenNode->name = (char *)malloc(sizeof(char) * nameLength);
+    tokenNode->val = (char *)malloc(sizeof(char) * textLength);
 
     assert(tokenNode->name != NULL);
     assert(tokenNode->val != NULL);
@@ -98,7 +113,8 @@ static inline pNode newTokenNode(int lineNo, NodeType type, char* tokenName,
 }
 
 static inline void delNode(pNode node) {
-    if (node == NULL) return;
+    if (node == NULL)
+        return;
     while (node->child != NULL) {
         pNode temp = node->child;
         node->child = node->child->next;
