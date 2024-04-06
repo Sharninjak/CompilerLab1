@@ -110,8 +110,6 @@ COMMENT     "//"
                 }
 
 
-
-
 {digit}+{ID}                { lexError = TRUE; printf("Error type A at Line %d: Illegal ID \"%s\".\n", yylineno, yytext); }
 "."{digit}+                 { lexError = TRUE; printf("Error type A at Line %d: Illegal floating point number \"%s\".\n", yylineno, yytext); }
 {digit}+"."                 { lexError = TRUE; printf("Error type A at Line %d: Illegal floating point number \"%s\".\n", yylineno, yytext); }

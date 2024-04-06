@@ -1036,47 +1036,47 @@ YY_RULE_SETUP
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 115 "./lexical.l"
+#line 113 "./lexical.l"
 { lexError = TRUE; printf("Error type A at Line %d: Illegal ID \"%s\".\n", yylineno, yytext); }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 116 "./lexical.l"
+#line 114 "./lexical.l"
 { lexError = TRUE; printf("Error type A at Line %d: Illegal floating point number \"%s\".\n", yylineno, yytext); }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 117 "./lexical.l"
+#line 115 "./lexical.l"
 { lexError = TRUE; printf("Error type A at Line %d: Illegal floating point number \"%s\".\n", yylineno, yytext); }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 118 "./lexical.l"
+#line 116 "./lexical.l"
 { lexError = TRUE; printf("Error type A at Line %d: Illegal floating point number \"%s\".\n", yylineno, yytext); }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 119 "./lexical.l"
+#line 117 "./lexical.l"
 { lexError = TRUE; printf("Error type A at Line %d: Illegal floating point number \"%s\".\n", yylineno, yytext); }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 120 "./lexical.l"
+#line 118 "./lexical.l"
 { lexError = TRUE; printf("Error type A at Line %d: Illegal floating point number \"%s\".\n", yylineno, yytext); }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 121 "./lexical.l"
+#line 119 "./lexical.l"
 { lexError = TRUE; printf("Error type A at Line %d: Illegal floating point number \"%s\".\n", yylineno, yytext); }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 122 "./lexical.l"
+#line 120 "./lexical.l"
 { lexError = TRUE; printf("Error type A at Line %d: Mysterious character \'%s\'.\n", yylineno, yytext); }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 128 "./lexical.l"
+#line 126 "./lexical.l"
 ECHO;
 	YY_BREAK
 #line 1083 "./lex.yy.c"
@@ -2096,7 +2096,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 128 "./lexical.l"
+#line 126 "./lexical.l"
 
 
 // int main(int argc, char** argv) {
