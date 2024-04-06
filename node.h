@@ -1,15 +1,11 @@
 #ifndef NODE_H
 #define NODE_H
 
-// #include <unistd.h>
 #include <assert.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-// #define NAME_LENGTH 32
-// #define VAL_LENGTH 64
 
 #define TRUE 1
 #define FALSE 0
