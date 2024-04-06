@@ -1022,7 +1022,7 @@ YY_RULE_SETUP
                     }
                     if(flag == 0){
                         lexError = TRUE;
-                        printf("Error Type B at Line %d: The  /* can not match a */.\n", line);
+                        printf("Error Type B at Line %d: /* can not match a */.\n", line);
                     }
                 }
 	YY_BREAK
