@@ -74,7 +74,7 @@
     #include"lex.yy.c"
     void yyerror(char* msg);
     extern int synError;
-    pNode root;
+    ptrNode root;
     #define YYERROR_VERBOSE 1
 
 

@@ -92,7 +92,7 @@ union YYSTYPE
 {
 #line 14 "./syntax.y"
 
-    pNode node; 
+    ptrNode node; 
 
 #line 98 "./syntax.tab.h"
 

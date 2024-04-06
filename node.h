@@ -20,12 +20,6 @@ typedef enum nodeType {
     TOKEN_FLOAT,
     TOKEN_ID,
     TOKEN_TYPE,
-    // TOKEN_COMMA,
-    // TOKEN_SEMI,
-    // TOKEN_ASSIGNOP,
-    // TOKEN_RELOP,
-    // TOKEN_PLUS,
-    // TOKEN_MINUS,
     TOKEN_OTHER,
     NOT_A_TOKEN
 
@@ -34,8 +28,8 @@ typedef enum nodeType {
 // typedef uint_32 bool;
 
 // node type declared
-typedef struct node {
-    int lineNo; //  node in which line
+typedef struct node { // alias: Node
+    int lineNo;       //  node in which line
     //   int depth;   //  node depth, for count white space for print
     NodeType type; // node type
     char *name;    //  node name
@@ -46,14 +40,13 @@ typedef struct node {
 
 } Node;
 
-typedef Node *pNode;
+typedef Node *ptrNode;
 
-static inline pNode newNode(int lineNo, NodeType type, char *name, int argc,
-                            ...) {
-    pNode curNode = NULL;
+ptrNode newNode(int lineNo, NodeType type, char *name, int argc, ...) {
+    ptrNode curNode = NULL;
     int nameLength = strlen(name) + 1;
 
-    curNode = (pNode)malloc(sizeof(Node));
+    curNode = (ptrNode)malloc(sizeof(Node));
 
     assert(curNode != NULL);
 
@@ -71,12 +64,12 @@ static inline pNode newNode(int lineNo, NodeType type, char *name, int argc,
     va_list vaList;
     va_start(vaList, argc);
 
-    pNode tempNode = va_arg(vaList, pNode);
+    ptrNode tempNode = va_arg(vaList, ptrNode);
 
     curNode->child = tempNode;
 
     for (int i = 1; i < argc; i++) {
-        tempNode->next = va_arg(vaList, pNode);
+        tempNode->next = va_arg(vaList, ptrNode);
         if (tempNode->next != NULL) {
             tempNode = tempNode->next;
         }
@@ -86,9 +79,9 @@ static inline pNode newNode(int lineNo, NodeType type, char *name, int argc,
     return curNode;
 }
 
-static inline pNode newTokenNode(int lineNo, NodeType type, char *tokenName,
-                                 char *tokenText) {
-    pNode tokenNode = (pNode)malloc(sizeof(Node));
+ptrNode newTokenNode(int lineNo, NodeType type, char *tokenName,
+                     char *tokenText) {
+    ptrNode tokenNode = (ptrNode)malloc(sizeof(Node));
     int nameLength = strlen(tokenName) + 1;
     int textLength = strlen(tokenText) + 1;
 
@@ -112,11 +105,11 @@ static inline pNode newTokenNode(int lineNo, NodeType type, char *tokenName,
     return tokenNode;
 }
 
-static inline void delNode(pNode node) {
+void delNode(ptrNode node) {
     if (node == NULL)
         return;
     while (node->child != NULL) {
-        pNode temp = node->child;
+        ptrNode temp = node->child;
         node->child = node->child->next;
         delNode(temp);
     }
@@ -128,7 +121,7 @@ static inline void delNode(pNode node) {
     node = NULL;
 }
 
-static inline void printTreeInfo(pNode curNode, int height) {
+void printTreeInfo(ptrNode curNode, int height) {
     if (curNode == NULL) {
         return;
     }
