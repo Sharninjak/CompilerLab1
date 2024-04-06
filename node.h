@@ -100,39 +100,45 @@ ptrNode newTokenNode(int lineNo, NodeType type, char *name, char *tokenText) {
 void delNode(ptrNode node) {
     if (node == NULL)
         return;
-    while (node->child != NULL) {
-        ptrNode temp = node->child;
-        node->child = node->child->next;
-        delNode(temp);
-    }
+    ptrNode currentChild = node->child;
+    ptrNode currentNext = node->next;
+    delNode(currentChild);
+    delNode(currentNext);
     free(node->name);
     free(node->val);
     free(node);
-    node->name = NULL;
-    node->val = NULL;
-    node = NULL;
 }
 
-void printTreeInfo(ptrNode curNode, int height) {
-    if (curNode == NULL) {
+void printTreeInfo(ptrNode node, int height) {
+    if (node == NULL) {
         return;
     }
 
     for (int i = 0; i < height; i++) {
         printf("  ");
     }
-    printf("%s", curNode->name);
-    if (curNode->type == NOT_A_TOKEN) {
-        printf(" (%d)", curNode->lineNo);
-    } else if (curNode->type == TOKEN_TYPE || curNode->type == TOKEN_ID ||
-               curNode->type == TOKEN_INT) {
-        printf(": %s", curNode->val);
-    } else if (curNode->type == TOKEN_FLOAT) {
-        printf(": %lf", atof(curNode->val));
+    printf("%s", node->name);
+    switch (node->type) {
+    case NOT_A_TOKEN:
+        printf(" (%d)", node->lineNo);
+        break;
+    case TOKEN_TYPE:
+    case TOKEN_ID:
+    case TOKEN_INT:
+        printf(": %s", node->val);
+        break;
+    case TOKEN_FLOAT:
+        // 假设 val 是以字符串形式存储的浮点数
+        printf(": %f", atof(node->val));
+        break;
+    // 可以继续添加其他类型的处理
+    default:
+        // 如果需要，可以打印未知类型的警告信息
+        break;
     }
     printf("\n");
-    printTreeInfo(curNode->child, height + 1);
-    printTreeInfo(curNode->next, height);
+    printTreeInfo(node->child, height + 1);
+    printTreeInfo(node->next, height);
 }
 
 #endif

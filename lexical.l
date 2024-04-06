@@ -44,7 +44,7 @@ LC          "{"
 RC          "}"
 ID          {letter}{ld}*
 INT         0|([1-9]+[0-9]*)|0[0-7]+|0[xX][0-9a-fA-F]+
-FLOAT       {digit}+"."{digit}+|{digit}*"."{digit}+[eE][+-]?{digit}+|{digit}+"."{digit}*[eE][+-]?{digit}+
+FLOAT       ({digit}+"."{digit}+)|({digit}*"."{digit}+[eE][+-]?{digit}+)|({digit}+"."{digit}*[eE][+-]?{digit}+)
 COMMENT     "//"
 
 
@@ -75,7 +75,6 @@ COMMENT     "//"
 {RB}            { yylval.node = newTokenNode(yylineno, TOKEN_OTHER, "RB", yytext); return RB; }
 {LC}            { yylval.node = newTokenNode(yylineno, TOKEN_OTHER, "LC", yytext); return LC; }
 {RC}            { yylval.node = newTokenNode(yylineno, TOKEN_OTHER, "RC", yytext); return RC; }
-
 {ID}            { yylval.node = newTokenNode(yylineno, TOKEN_ID, "ID", yytext); return ID;}
 {INT}           { yylval.node = newTokenNode(yylineno, TOKEN_INT, "INT", yytext); return INT;}
 {FLOAT}         { yylval.node = newTokenNode(yylineno, TOKEN_FLOAT, "FLOAT", yytext); return FLOAT;}
@@ -109,7 +108,8 @@ COMMENT     "//"
                     printf("Error Type B at Line %d: syntax error.\n", yylineno);
                 }
 
-
+0([0-7]*[89][0-7]*)*        { lexError = TRUE; printf("Error type A at Line %d: Illegal octal \"%s\".\n", yylineno, yytext); }
+0[xX]([0-9a-fA-F]*[g-zG-Z][0-9a-fA-F]*)* { lexError = TRUE; printf("Error type A at Line %d: Illegal hexadecimal \"%s\".\n", yylineno, yytext); }
 {digit}+{ID}                { lexError = TRUE; printf("Error type A at Line %d: Illegal ID \"%s\".\n", yylineno, yytext); }
 "."{digit}+                 { lexError = TRUE; printf("Error type A at Line %d: Illegal floating point number \"%s\".\n", yylineno, yytext); }
 {digit}+"."                 { lexError = TRUE; printf("Error type A at Line %d: Illegal floating point number \"%s\".\n", yylineno, yytext); }
