@@ -5,7 +5,7 @@
 extern unsigned lexError;
 int lines = 0;
 int yycolumn = 1;
-
+// YY_USER_ACTION宏代表在执行每一个语义动作之前需要先被执行的一段代码
 #define YY_USER_ACTION \
     yylloc.first_line=yylloc.last_line=yylineno; \
     yylloc.first_column=yycolumn; \
@@ -44,7 +44,7 @@ RB          "]"
 LC          "{"
 RC          "}"
 ID          {letter}{ld}*
-INT         0|[1-9]+[0-9]*
+INT         0|([1-9]+[0-9]*)|0[0-7]+|0[xX][0-9a-fA-F]+
 FLOAT       {digit}+"."{digit}+|{digit}*"."{digit}+[eE][+-]?{digit}+|{digit}+"."{digit}*[eE][+-]?{digit}+
 %%
 {ws}+           {;}
