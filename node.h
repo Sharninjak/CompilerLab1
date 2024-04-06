@@ -44,24 +44,26 @@ typedef Node *ptrNode;
 
 ptrNode newNode(int lineNo, NodeType type, char *name, int argc, ...) {
     ptrNode curNode = NULL;
-    int nameLength = strlen(name) + 1;
-
-    curNode = (ptrNode)malloc(sizeof(Node));
+    // int nameLength = strlen(name) + 1;
+    // 指针自身 = (指针类型*）malloc（sizeof（指针类型）*数据数量）
+    curNode = (Node *)malloc(sizeof(Node));
+    // curNode = (ptrNode)malloc(sizeof(Node)); // 两个都行
 
     assert(curNode != NULL);
 
     // curNode->name = (char*)malloc(sizeof(char) * NAME_LENGTH);
     // curNode->val = (char*)malloc(sizeof(char) * VAL_LENGTH);
-    curNode->name = (char *)malloc(sizeof(char) * nameLength);
-
-    assert(curNode->name != NULL);
+    // curNode->name = (char *)malloc(sizeof(char) * nameLength);
+    // assert(curNode->name != NULL);
     // assert(curNode->val != NULL);
 
     curNode->lineNo = lineNo;
     curNode->type = type;
-    strncpy(curNode->name, name, nameLength);
+    curNode->name = name;
+    // strncpy(curNode->name, name, nameLength);
 
-    va_list vaList;
+    va_list
+        vaList; // 存储可变参数列表信息的数据类型，是一个指向栈空间中某个位置的指针
     va_start(vaList, argc);
 
     ptrNode tempNode = va_arg(vaList, ptrNode);
@@ -93,11 +95,12 @@ ptrNode newTokenNode(int lineNo, NodeType type, char *tokenName,
     tokenNode->name = (char *)malloc(sizeof(char) * nameLength);
     tokenNode->val = (char *)malloc(sizeof(char) * textLength);
 
-    assert(tokenNode->name != NULL);
-    assert(tokenNode->val != NULL);
-
-    strncpy(tokenNode->name, tokenName, nameLength);
-    strncpy(tokenNode->val, tokenText, textLength);
+    // assert(tokenNode->name != NULL);
+    // assert(tokenNode->val != NULL);
+    tokenNode->name = tokenName;
+    tokenNode->val = tokenText;
+    // strncpy(tokenNode->name, tokenName, nameLength);
+    // strncpy(tokenNode->val, tokenText, textLength);
 
     tokenNode->child = NULL;
     tokenNode->next = NULL;
