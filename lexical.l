@@ -43,7 +43,7 @@ RB          "]"
 LC          "{"
 RC          "}"
 ID          {letter}{ld}*
-INT         0|([1-9]+[0-9]*)|0[0-7]+|0[xX][0-9a-fA-F]+
+INT         0|([1-9]+[0-9]*)|(0[0-7]+)|(0[xX][0-9a-fA-F]+)
 FLOAT       ({digit}+"."{digit}+)|({digit}*"."{digit}+[eE][+-]?{digit}+)|({digit}+"."{digit}*[eE][+-]?{digit}+)
 COMMENT     "//"
 
