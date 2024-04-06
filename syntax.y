@@ -46,16 +46,8 @@
 
 // precedence and associativity
 
-%right ASSIGNOP
-%left OR
-%left AND
-%left RELOP
-%left PLUS MINUS
-%left STAR DIV
-%right NOT
-%left DOT
-%left LB RB
-%left LP RP
+%right ASSIGNOP NOT
+%left OR AND RELOP PLUS MINUS STAR DIV DOT LB RB LP RP
 %nonassoc LOWER_THAN_ELSE
 %nonassoc ELSE
 

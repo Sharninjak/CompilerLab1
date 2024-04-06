@@ -939,11 +939,6 @@ State 73
    57    | Exp • LB Exp RB
    58    | Exp • DOT ID
 
-    DOT   shift, and go to state 81
-    STAR  shift, and go to state 87
-    DIV   shift, and go to state 88
-    LB    shift, and go to state 91
-
     $default  reduce using rule 53 (Exp)
 
 
@@ -961,8 +956,16 @@ State 74
    57    | Exp • LB Exp RB
    58    | Exp • DOT ID
 
-    DOT  shift, and go to state 81
-    LB   shift, and go to state 91
+    DOT       shift, and go to state 81
+    RELOP     shift, and go to state 83
+    ASSIGNOP  shift, and go to state 84
+    PLUS      shift, and go to state 85
+    MINUS     shift, and go to state 86
+    STAR      shift, and go to state 87
+    DIV       shift, and go to state 88
+    AND       shift, and go to state 89
+    OR        shift, and go to state 90
+    LB        shift, and go to state 91
 
     $default  reduce using rule 54 (Exp)
 
@@ -1373,13 +1376,6 @@ State 102
    57    | Exp • LB Exp RB
    58    | Exp • DOT ID
 
-    DOT    shift, and go to state 81
-    PLUS   shift, and go to state 85
-    MINUS  shift, and go to state 86
-    STAR   shift, and go to state 87
-    DIV    shift, and go to state 88
-    LB     shift, and go to state 91
-
     $default  reduce using rule 47 (Exp)
 
 
@@ -1425,11 +1421,6 @@ State 104
    57    | Exp • LB Exp RB
    58    | Exp • DOT ID
 
-    DOT   shift, and go to state 81
-    STAR  shift, and go to state 87
-    DIV   shift, and go to state 88
-    LB    shift, and go to state 91
-
     $default  reduce using rule 48 (Exp)
 
 
@@ -1446,11 +1437,6 @@ State 105
    51    | Exp • DIV Exp
    57    | Exp • LB Exp RB
    58    | Exp • DOT ID
-
-    DOT   shift, and go to state 81
-    STAR  shift, and go to state 87
-    DIV   shift, and go to state 88
-    LB    shift, and go to state 91
 
     $default  reduce using rule 49 (Exp)
 
@@ -1469,9 +1455,6 @@ State 106
    57    | Exp • LB Exp RB
    58    | Exp • DOT ID
 
-    DOT  shift, and go to state 81
-    LB   shift, and go to state 91
-
     $default  reduce using rule 50 (Exp)
 
 
@@ -1488,9 +1471,6 @@ State 107
    51    | Exp DIV Exp •
    57    | Exp • LB Exp RB
    58    | Exp • DOT ID
-
-    DOT  shift, and go to state 81
-    LB   shift, and go to state 91
 
     $default  reduce using rule 51 (Exp)
 
@@ -1509,14 +1489,6 @@ State 108
    57    | Exp • LB Exp RB
    58    | Exp • DOT ID
 
-    DOT    shift, and go to state 81
-    RELOP  shift, and go to state 83
-    PLUS   shift, and go to state 85
-    MINUS  shift, and go to state 86
-    STAR   shift, and go to state 87
-    DIV    shift, and go to state 88
-    LB     shift, and go to state 91
-
     $default  reduce using rule 45 (Exp)
 
 
@@ -1533,15 +1505,6 @@ State 109
    51    | Exp • DIV Exp
    57    | Exp • LB Exp RB
    58    | Exp • DOT ID
-
-    DOT    shift, and go to state 81
-    RELOP  shift, and go to state 83
-    PLUS   shift, and go to state 85
-    MINUS  shift, and go to state 86
-    STAR   shift, and go to state 87
-    DIV    shift, and go to state 88
-    AND    shift, and go to state 89
-    LB     shift, and go to state 91
 
     $default  reduce using rule 46 (Exp)
 
