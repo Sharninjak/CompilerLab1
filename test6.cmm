@@ -1,7 +1,6 @@
 int main() {
     int i = 09;
-    int j = 0x3G;
     int g = 012;
-    int g = ;
+    int j = 0x3f;
     int f =0xjj;
 }

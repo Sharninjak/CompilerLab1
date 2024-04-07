@@ -33,7 +33,7 @@ ptrNode newNode(int lineNo, NodeType type, char *name, int argc, ...);
 
 ptrNode newTokenNode(int lineNo, NodeType type, char *name, char *tokenText);
 
-void delNode(ptrNode node);
+void deleteNode(ptrNode node);
 
 void printTreeInfo(ptrNode node, int height);
 

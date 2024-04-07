@@ -1,4 +1,6 @@
 int main() {
-    float i = 1.05e;
+    int i = 0;
+    a[5,3] = 1.5;
+    int i = 09;
     return 0;
 }

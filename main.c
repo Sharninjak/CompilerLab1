@@ -1,6 +1,6 @@
 #include "node.h"
 #include "syntax.tab.h"
-
+#include <stdio.h>
 extern ptrNode root;
 
 extern int yylineno;
@@ -23,10 +23,12 @@ int main(int argc, char **argv) {
     }
 
     yyrestart(f);
+    // yydebug = 1;
     yyparse();
     if (!lexError && !synError) {
         printTreeInfo(root, 0);
     }
-    delNode(root);
+    // printTreeInfo(root, 0);
+    deleteNode(root);
     return 0;
 }

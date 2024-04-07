@@ -66,13 +66,13 @@ ptrNode newTokenNode(int lineNo, NodeType type, char *name, char *tokenText) {
     return tokenNode;
 }
 
-void delNode(ptrNode node) {
+void deleteNode(ptrNode node) {
     if (node == NULL)
         return;
     ptrNode currentChild = node->child;
     ptrNode currentNext = node->next;
-    delNode(currentChild);
-    delNode(currentNext);
+    deleteNode(currentChild);
+    deleteNode(currentNext);
     free(node->name);
     free(node->val);
     free(node);
