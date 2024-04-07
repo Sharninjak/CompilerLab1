@@ -82,12 +82,6 @@ COMMENT     "//"
 {OCT}           { yylval.node = newTokenNode(yylineno, TOKEN_INT, "INT", yytext); return INT;}
 {HEX}           { yylval.node = newTokenNode(yylineno, TOKEN_INT, "INT", yytext); return INT;}
 {FLOAT}         { yylval.node = newTokenNode(yylineno, TOKEN_FLOAT, "FLOAT", yytext); return FLOAT;}
-{COMMENT}       { 
-                    char c = input();
-                    while(c != '\n'){
-                        c = input();
-                    };
-                }
 "/*"            {
                     int line = yylineno;
                     char c = input();
@@ -110,6 +104,12 @@ COMMENT     "//"
 "*/"            { 
                     lexError = TRUE;
                     printf("Error Type B at Line %d: syntax error.\n", yylineno);
+                }
+{COMMENT}       { 
+                    char c = input();
+                    while(c != '\n'){
+                        c = input();
+                    };
                 }
 
 0([0-7]*[89][0-7]*)*        { lexError = TRUE; printf("Error type A at Line %d: Illegal octal \"%s\".\n", yylineno, yytext); }

@@ -385,8 +385,8 @@ static const flex_int16_t yy_accept[89] =
         0,    0,   39,   37,    1,    2,    2,   16,   37,   21,
        22,   12,   10,   19,   11,   17,   13,   28,   28,   18,
         9,   20,    9,   27,   23,   24,   27,   27,   27,   27,
-       27,   27,   25,   37,   26,    1,    9,   14,   34,    0,
-       33,   32,    0,   29,   35,   36,   28,   28,   27,   27,
+       27,   27,   25,   37,   26,    1,    9,   14,   33,    0,
+       32,   34,    0,   29,   35,   36,   28,   28,   27,   27,
        27,    3,   27,   27,   27,   27,   15,    0,   31,    0,
        35,   30,   36,   27,   27,    6,   27,   27,   27,    0,
        31,    0,    0,   31,   36,    4,   27,   27,   27,   27,
@@ -999,16 +999,6 @@ YY_RULE_SETUP
 case 32:
 YY_RULE_SETUP
 #line 85 "./lexical.l"
-{ 
-                    char c = input();
-                    while(c != '\n'){
-                        c = input();
-                    };
-                }
-	YY_BREAK
-case 33:
-YY_RULE_SETUP
-#line 91 "./lexical.l"
 {
                     int line = yylineno;
                     char c = input();
@@ -1029,12 +1019,22 @@ YY_RULE_SETUP
                     }
                 }
 	YY_BREAK
-case 34:
+case 33:
 YY_RULE_SETUP
-#line 110 "./lexical.l"
+#line 104 "./lexical.l"
 { 
                     lexError = TRUE;
                     printf("Error Type B at Line %d: syntax error.\n", yylineno);
+                }
+	YY_BREAK
+case 34:
+YY_RULE_SETUP
+#line 108 "./lexical.l"
+{ 
+                    char c = input();
+                    while(c != '\n'){
+                        c = input();
+                    };
                 }
 	YY_BREAK
 case 35:

@@ -94,7 +94,26 @@ void printTreeInfo(ptrNode node, int height) {
     case TOKEN_TYPE:
     case TOKEN_ID:
     case TOKEN_INT:
-        printf(": %s", node->val);
+        char *endptr;
+        long int decimalValue;
+
+        // 检查是否为十六进制
+        if (sscanf(node->val, "0x%lx", &decimalValue) == 1) {
+            // 如果成功，打印十进制值
+            printf(": %ld", decimalValue);
+        } else if (sscanf(node->val, "0X%lx", &decimalValue) == 1) {
+            // 如果成功，打印十进制值
+            printf(": %ld", decimalValue);
+        } else if (sscanf(node->val, "0%lo", &decimalValue) == 1) {
+            // 如果成功，打印十进制值
+            printf(" %ld", decimalValue);
+        } else if (sscanf(node->val, "%ld", &decimalValue) == 1) {
+            // 如果没有前缀，尝试作为十进制处理
+            printf(": %ld", decimalValue);
+        } else {
+            ;
+        }
+        // printf(": %s", node->val);
         break;
     case TOKEN_FLOAT:
         // 假设 val 是以字符串形式存储的浮点数
