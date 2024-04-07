@@ -1,0 +1,11 @@
+int main() {
+    /*
+    4 comment
+    版权所有 南京大学计算机科学与技术系 2023年春季版
+    19
+    5 /*
+    6 nested comment
+    7 */
+    */
+    int i = 1;
+}
